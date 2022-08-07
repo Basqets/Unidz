@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Easy : MonoBehaviour
 {
+    private const float KgInPounds = 0.453f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +18,6 @@ public class Easy : MonoBehaviour
         Debug.Log(YearToCentury(701));  //6
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     float CalcPerimeter(int katetA, int katetB)
     {
         float hipotenyse = Mathf.Sqrt(katetA * katetA + katetB * katetB);
@@ -30,16 +26,9 @@ public class Easy : MonoBehaviour
         return perimeter;
     }
 
-    bool Delitel(int x, int y)
+    bool IsDivison(int x, int y)
     {
-        if (y % x == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return y % x == 0;
     }
 
     DayWeek GetDay(int day)
@@ -61,7 +50,7 @@ public class Easy : MonoBehaviour
             case 7:
                 return DayWeek.Voskresenye;
             default:
-                return DayWeek.Neizvestno;
+                throw new Exception("Wrong day of the week!")
         }
     }
 
@@ -73,19 +62,18 @@ public class Easy : MonoBehaviour
         Chetverg,
         Pyatnica,
         Subbota,
-        Voskresenye,
-        Neizvestno
+        Voskresenye
     }
 
     float PoundsToKg(float pounds)
     {
-        float kg = pounds * 0.453f;
+        float kg = pounds * KgInPounds;
         return kg;
     }
 
     float KgToPounds(float kg)
     {
-        float pounds = kg * 2.2046f;
+        float pounds = kg / KgInPounds;
         return pounds;
     }
 
@@ -95,9 +83,13 @@ public class Easy : MonoBehaviour
         {
             Debug.Log($"Max: {a} Min: {b}");
         }
-        else
+        else if (a < b)
         {
             Debug.Log($"Max: {b} Min: {a}");
+        }
+        else
+        {
+            Debug.Log($"{b} = {a}");
         }
     }
     
