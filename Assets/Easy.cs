@@ -8,7 +8,7 @@ public class Easy : MonoBehaviour
     void Start()
     {
         Debug.Log(CalcPerimeter(3, 7)); //1
-        Debug.Log(Delitel(4, 8));       //2
+        Debug.Log(Divider(4, 8));       //2
         Debug.Log(GetDay(8));           //3
         Debug.Log(PoundsToKg(170));     //4
         Debug.Log(KgToPounds(70));      //4
@@ -30,7 +30,7 @@ public class Easy : MonoBehaviour
         return perimeter;
     }
 
-    bool Delitel(int x, int y)
+    bool Divider(int x, int y)
     {
         if (y % x == 0)
         {
@@ -47,51 +47,56 @@ public class Easy : MonoBehaviour
         switch (day)
         {
             case 1:
-                return DayWeek.Ponedelnik;
+                return DayWeek.Monday;
             case 2:
-                return DayWeek.Vtornik;
+                return DayWeek.Tuesday;
             case 3:
-                return DayWeek.Sreda;
+                return DayWeek.Wednesday;
             case 4:
-                return DayWeek.Chetverg;
+                return DayWeek.Thursday;
             case 5:
-                return DayWeek.Pyatnica;
+                return DayWeek.Friday;
             case 6:
-                return DayWeek.Subbota;
+                return DayWeek.Saturday;
             case 7:
-                return DayWeek.Voskresenye;
+                return DayWeek.Sunday;
             default:
-                return DayWeek.Neizvestno;
+                return DayWeek.IncorrectInput;
         }
     }
 
     enum DayWeek
     {
-        Ponedelnik,
-        Vtornik,
-        Sreda,
-        Chetverg,
-        Pyatnica,
-        Subbota,
-        Voskresenye,
-        Neizvestno
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday,
+        IncorrectInput
     }
+
 
     float PoundsToKg(float pounds)
     {
-        float kg = pounds * 0.453f;
+        float kg = pounds * 453 / 1000;
         return kg;
     }
 
     float KgToPounds(float kg)
     {
-        float pounds = kg * 2.2046f;
+        float pounds = kg * 1000 / 453;
         return pounds;
     }
 
     void MaxMin(float a, float b)
     {
-        if (a > b)
+        if (a == b)
+        {
+            Debug.Log($"{a} = {b}");
+        }
+        else if (a > b)
         {
             Debug.Log($"Max: {a} Min: {b}");
         }

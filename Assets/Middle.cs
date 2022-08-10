@@ -87,16 +87,16 @@ public class Warrior
     {
         float damage = Random.Range(_minDamage, _maxDamage);
         enemy._hp -= damage;
-        Debug.Log($"Воин {_name} атаковал воина {enemy._name}. Нанесенный урон {damage}. Оставшееся здоровье: {enemy._hp}");
+        Debug.Log($"Warrior {_name} attack opponent {enemy._name}. Damaged {damage}. {enemy._name} HP left: {enemy._hp}");
         if (enemy._hp <= 0)
         {
-            Debug.Log($"Воин {_name} выиграл у воина {enemy._name}, у воина {_name} осталось {_hp} здоровья");
+            Debug.Log($"Warrior {_name} beat the opppent {enemy._name}, Warrior {_name} HP left {_hp}");
         }
     }
 
     public void Hello()
     {
-        Debug.Log($"Воин {_name} с {_hp} здоровьем приветствует соперника");
+        Debug.Log($"Warrior: {_name}, Hp: {_hp} greeting opponent");
     }
 
     public bool Alive()
